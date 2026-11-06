@@ -17,13 +17,13 @@ size.addEventListener('input', () => {
 
 async function start() {
   const response = await fetch('pet.json');
-  if (!response.ok) throw new Error('Не удалось загрузить описание анимаций.');
+  if (!response.ok) throw new Error('Could not load animation data.');
   const pet = await response.json();
   const image = new Image();
   image.src = pet.spritesheet;
   await image.decode();
   for (const state of pet.animations) select.add(new Option(state.label, state.id));
-  select.add(new Option('Взгляд за курсором', 'gaze'));
+  select.add(new Option('Cursor tracking', 'gaze'));
   select.disabled = false;
   pauseButton.disabled = false;
   let state = pet.animations[0];
@@ -38,7 +38,7 @@ async function start() {
   }
 
   function updatePauseLabel() {
-    pauseButton.textContent = paused ? 'Продолжить' : 'Пауза';
+    pauseButton.textContent = paused ? 'Resume' : 'Pause';
     pauseButton.setAttribute('aria-pressed', String(paused));
   }
 
@@ -47,13 +47,13 @@ async function start() {
     elapsed = 0;
     if (select.value === 'gaze') {
       pauseButton.disabled = true;
-      stateLabel.textContent = 'Слежение взглядом';
-      hint.textContent = 'Двигай курсор или касайся области рядом с Наной';
+      stateLabel.textContent = 'Cursor tracking';
+      hint.textContent = 'Move the pointer or touch the area around Nana';
       draw(0, 0);
     } else {
       state = pet.animations.find(item => item.id === select.value);
       stateLabel.textContent = state.label;
-      hint.textContent = 'Выбери анимацию или включи взгляд за курсором';
+      hint.textContent = 'Select an animation or enable cursor tracking';
       pauseButton.disabled = false;
       draw(state.row, frame);
     }
@@ -100,7 +100,7 @@ async function start() {
 
 start().catch(error => {
   const message = document.querySelector('#error');
-  message.textContent = `${error.message} Запусти демо через локальный сервер или открой GIF из README.`;
+  message.textContent = `${error.message} Serve the demo locally or view the GIF in the README.`;
   message.hidden = false;
-  stateLabel.textContent = 'Ошибка загрузки';
+  stateLabel.textContent = 'Loading error';
 });

@@ -18,7 +18,7 @@ h1 span { color: #f1a7ca; }
 .stage-top { position: absolute; top: 22px; left: 24px; right: 24px; font-size: 12px; color: #a9b4c7; }
 .stage-top span:first-child { display: flex; gap: 8px; align-items: center; }
 .stage-top i { width: 6px; height: 6px; border-radius: 50%; background: #eab0ce; }
-canvas { display: block; width: var(--pet-width, 384px); max-width: 100%; height: auto; }
+canvas { display: block; width: var(--pet-width, 192px); max-width: 100%; height: auto; }
 .hint { position: absolute; bottom: 12px; left: 12px; right: 12px; text-align: center; font-size: 12px; color: #a5aec1; }
 .controls { padding: 20px 24px; gap: 20px; background: #1a1f29; }
 .control { display: grid; gap: 8px; }

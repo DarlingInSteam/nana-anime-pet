@@ -1,39 +1,39 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#151922">
-  <meta name="description" content="Нана — аниме-питомец. Девять анимаций, шестнадцать направлений взгляда и интерактивное демо.">
-  <title>Нана — аниме-питомец</title>
+  <meta name="description" content="Nana anime pet sprite sheet: 9 animations, 16 gaze directions and an interactive viewer.">
+  <title>Nana — anime pet</title>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <main>
     <header>
-      <a class="wordmark" href="./" aria-label="Нана — главная">nana<span> / pet</span></a>
-      <a class="repo-link" href="https://github.com/DarlingInSteam/nana-anime-pet">Репозиторий ↗</a>
+      <a class="wordmark" href="./" aria-label="Nana home">nana<span> / pet</span></a>
+      <a class="repo-link" href="https://github.com/DarlingInSteam/nana-anime-pet">Repository ↗</a>
     </header>
     <section class="intro">
-      <div><p class="eyebrow">АНИМЕ-КОМПАНЬОН</p><h1>Знакомься, Нана<span>.</span></h1></div>
-      <p>Розовые хвостики. Голубое худи.<br>Девять анимаций — и немного характера.</p>
+      <div><p class="eyebrow">ANIMATED SPRITE</p><h1>Nana<span>.</span></h1></div>
+      <p>9 animations. 16 gaze directions.<br>Transparent PNG sprite sheet.</p>
     </section>
-    <section class="viewer" aria-label="Интерактивный пример питомца">
+    <section class="viewer" aria-label="Interactive pet viewer">
       <div class="stage" id="stage">
-        <div class="stage-top"><span><i></i> Предпросмотр</span><span id="state-label">Загрузка…</span></div>
-        <canvas id="pet" width="768" height="832" role="img" aria-label="Анимированная Нана"></canvas>
-        <p class="hint" id="hint">Выбери анимацию или включи взгляд за курсором</p>
+        <div class="stage-top"><span><i></i> Preview</span><span id="state-label">Loading…</span></div>
+        <canvas id="pet" width="768" height="832" role="img" aria-label="Animated Nana sprite"></canvas>
+        <p class="hint" id="hint">Select an animation or enable cursor tracking</p>
       </div>
       <div class="controls">
-        <div class="control"><label for="animation">Анимация</label><select id="animation" disabled></select></div>
-        <button id="pause" type="button" disabled>Пауза</button>
-        <div class="control size-control"><label for="size">Размер <output id="size-value" for="size">200%</output></label><input id="size" type="range" min="100" max="300" step="25" value="200"></div>
+        <div class="control"><label for="animation">Animation</label><select id="animation" disabled></select></div>
+        <button id="pause" type="button" disabled>Pause</button>
+        <div class="control size-control"><label for="size">Size <output id="size-value" for="size">100%</output></label><input id="size" type="range" min="100" max="300" step="25" value="100"></div>
       </div>
     </section>
     <p class="error" id="error" role="alert" hidden></p>
-    <footer><span>73 кадра · 9 анимаций · 16 взглядов</span><a href="assets/nana.png" download="nana-spritesheet.png">Скачать спрайт-лист ↓</a></footer>
-    <noscript><p>Для интерактивного просмотра нужен JavaScript. <a href="previews/animations.gif">Открыть GIF с анимациями</a>.</p></noscript>
+    <footer><span>73 frames · 9 animations · 16 gaze directions</span><a href="assets/nana.png" download="nana-spritesheet.png">Download sprite sheet ↓</a></footer>
+    <noscript><p>JavaScript is required for the interactive viewer. <a href="previews/animations.gif">View the animation GIF</a>.</p></noscript>
   </main>
 </body>
 </html>
