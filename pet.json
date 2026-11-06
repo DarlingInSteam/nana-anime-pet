@@ -1,0 +1,20 @@
+{
+  "name": "Нана",
+  "spritesheet": "assets/nana.png",
+  "spriteVersion": 2,
+  "columns": 8,
+  "rows": 11,
+  "cell": { "width": 192, "height": 208 },
+  "animations": [
+    { "id": "idle", "label": "Покой", "row": 0, "durations": [280, 110, 110, 140, 140, 320] },
+    { "id": "running-right", "label": "Бег вправо", "row": 1, "durations": [120, 120, 120, 120, 120, 120, 120, 220] },
+    { "id": "running-left", "label": "Бег влево", "row": 2, "durations": [120, 120, 120, 120, 120, 120, 120, 220] },
+    { "id": "waving", "label": "Приветствие", "row": 3, "durations": [140, 140, 140, 280] },
+    { "id": "jumping", "label": "Прыжок", "row": 4, "durations": [140, 140, 140, 140, 280] },
+    { "id": "failed", "label": "Неудача", "row": 5, "durations": [140, 140, 140, 140, 140, 140, 140, 240] },
+    { "id": "waiting", "label": "Ожидание ответа", "row": 6, "durations": [150, 150, 150, 150, 150, 260] },
+    { "id": "running", "label": "Размышление", "row": 7, "durations": [120, 120, 120, 120, 120, 220] },
+    { "id": "review", "label": "Проверка результата", "row": 8, "durations": [150, 150, 150, 150, 150, 280] }
+  ],
+  "lookDirections": { "startRow": 9, "degreesClockwiseFromUp": [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5] }
+}

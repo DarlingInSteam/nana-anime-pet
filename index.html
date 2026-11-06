@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151922">
+  <meta name="description" content="Нана — аниме-питомец. Девять анимаций, шестнадцать направлений взгляда и интерактивное демо.">
+  <title>Нана — аниме-питомец</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="wordmark" href="./" aria-label="Нана — главная">nana<span> / pet</span></a>
+      <a class="repo-link" href="https://github.com/DarlingInSteam/nana-anime-pet">Репозиторий ↗</a>
+    </header>
+    <section class="intro">
+      <div><p class="eyebrow">АНИМЕ-КОМПАНЬОН</p><h1>Знакомься, Нана<span>.</span></h1></div>
+      <p>Розовые хвостики. Голубое худи.<br>Девять анимаций — и немного характера.</p>
+    </section>
+    <section class="viewer" aria-label="Интерактивный пример питомца">
+      <div class="stage" id="stage">
+        <div class="stage-top"><span><i></i> Предпросмотр</span><span id="state-label">Загрузка…</span></div>
+        <canvas id="pet" width="768" height="832" role="img" aria-label="Анимированная Нана"></canvas>
+        <p class="hint" id="hint">Выбери анимацию или включи взгляд за курсором</p>
+      </div>
+      <div class="controls">
+        <div class="control"><label for="animation">Анимация</label><select id="animation" disabled></select></div>
+        <button id="pause" type="button" disabled>Пауза</button>
+        <div class="control size-control"><label for="size">Размер <output id="size-value" for="size">200%</output></label><input id="size" type="range" min="100" max="300" step="25" value="200"></div>
+      </div>
+    </section>
+    <p class="error" id="error" role="alert" hidden></p>
+    <footer><span>73 кадра · 9 анимаций · 16 взглядов</span><a href="assets/nana.png" download="nana-spritesheet.png">Скачать спрайт-лист ↓</a></footer>
+    <noscript><p>Для интерактивного просмотра нужен JavaScript. <a href="previews/animations.gif">Открыть GIF с анимациями</a>.</p></noscript>
+  </main>
+</body>
+</html>
