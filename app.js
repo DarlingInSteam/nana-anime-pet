@@ -15,13 +15,18 @@ size.addEventListener('input', () => {
   sizeValue.value = `${size.value}%`;
 });
 
-async function start() {
-  const response = await fetch('pet.json');
+async function loadPet(path) {
+  const response = await fetch(path);
   if (!response.ok) throw new Error('Could not load animation data.');
   const pet = await response.json();
   const image = new Image();
   image.src = pet.spritesheet;
   await image.decode();
+  return { pet, image };
+}
+
+async function start() {
+  let { pet, image } = await loadPet('pet.json');
   for (const state of pet.animations) select.add(new Option(state.label, state.id));
   select.add(new Option('Cursor tracking', 'gaze'));
   select.disabled = false;
@@ -30,6 +35,42 @@ async function start() {
   let frame = 0;
   let lastTime = performance.now();
   let elapsed = 0;
+  const petChoice = document.querySelector('#pet-choice');
+  const wordmark = document.querySelector('.wordmark');
+  wordmark.addEventListener('click', event => {
+    event.preventDefault();
+    const control = document.querySelector('#pet-control');
+    control.hidden = !control.hidden;
+    wordmark.setAttribute('aria-expanded', String(!control.hidden));
+  });
+  petChoice.addEventListener('change', async () => {
+    petChoice.disabled = true;
+    try {
+      const next = await loadPet(petChoice.value);
+      pet = next.pet;
+      image = next.image;
+      state = pet.animations[0];
+      select.value = state.id;
+      frame = 0;
+      elapsed = 0;
+      pauseButton.disabled = false;
+      stateLabel.textContent = state.label;
+      hint.textContent = 'Select an animation or enable cursor tracking';
+      canvas.setAttribute('aria-label', `Animated ${pet.name} sprite`);
+      const download = document.querySelector('footer a');
+      download.href = pet.spritesheet;
+      download.download = pet.spritesheet.split('/').pop();
+      document.querySelector('#error').hidden = true;
+      draw(0, 0);
+    } catch (error) {
+      petChoice.value = pet.spritesheet === 'assets/nana.png' ? 'pet.json' : 'pet-mini.json';
+      const message = document.querySelector('#error');
+      message.textContent = error.message;
+      message.hidden = false;
+    } finally {
+      petChoice.disabled = false;
+    }
+  });
 
   function draw(row, column) {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -48,7 +89,7 @@ async function start() {
     if (select.value === 'gaze') {
       pauseButton.disabled = true;
       stateLabel.textContent = 'Cursor tracking';
-      hint.textContent = 'Move the pointer or touch the area around Nana';
+      hint.textContent = `Move the pointer or touch the area around ${pet.name}`;
       draw(0, 0);
     } else {
       state = pet.animations.find(item => item.id === select.value);

@@ -12,7 +12,7 @@
 <body>
   <main>
     <header>
-      <a class="wordmark" href="./" aria-label="Nana home">nana<span> / pet</span></a>
+      <a class="wordmark" href="./" aria-label="Nana home" aria-controls="pet-control" aria-expanded="false">nana<span> / pet</span></a>
       <a class="repo-link" href="https://github.com/DarlingInSteam/nana-anime-pet">Repository ↗</a>
     </header>
     <section class="intro">
@@ -27,6 +27,7 @@
       </div>
       <div class="controls">
         <div class="control"><label for="animation">Animation</label><select id="animation" disabled></select></div>
+        <div class="control" id="pet-control" hidden><label for="pet-choice">Pet</label><select id="pet-choice"><option value="pet.json">Nana</option><option value="pet-mini.json">Mini Me</option></select></div>
         <button id="pause" type="button" disabled>Pause</button>
         <div class="control size-control"><label for="size">Size <output id="size-value" for="size">100%</output></label><input id="size" type="range" min="100" max="300" step="25" value="100"></div>
       </div>
